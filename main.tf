@@ -75,15 +75,6 @@ docker-compose up -d
 SCRIPT
 }
 
-/*module "mig_template" {
-  source     = "terraform-google-modules/vm/google//modules/mig"
-  region = var.region
-  instance_template = "tr-instancetemplate"
-  version    = "~> 7.9"
-  network    = google_compute_network.default.self_link
-  subnetwork = google_compute_subnetwork.default
-}*/
-
 module "mig" {
   source            = "terraform-google-modules/vm/google//modules/mig"
   version           = "~> 7.9"
@@ -105,6 +96,9 @@ module "mig" {
 }
 
 module "gce-lb-http" {
+  terraform {
+    experiments = [ module_variable_optional_attrs ]
+  }
   source            = "GoogleCloudPlatform/lb-http/google"
   name              = "tr-loadbalancer"
   project           = var.project
@@ -112,8 +106,6 @@ module "gce-lb-http" {
   firewall_networks = [var.network_name]
 
   backends = {
-    
-    experiments = [ module_variable_optional_attrs ]
     default = {
       description                     = null
       protocol                        = "HTTP"
