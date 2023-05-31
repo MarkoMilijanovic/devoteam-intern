@@ -8,6 +8,7 @@ steps:
       echo "***********************"
       echo "$BRANCH_NAME"
       echo "***********************"
+      cat main.tf
 
 - id: 'tf init'
   name: 'hashicorp/terraform:1.0.0'
