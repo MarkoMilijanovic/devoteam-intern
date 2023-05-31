@@ -110,10 +110,10 @@ module "gce-lb-http" {
   project           = var.project
   target_tags       = [var.network_name]
   firewall_networks = [var.network_name]
-  experiments = [ module_variable_optional_attrs ]
-
 
   backends = {
+    
+    experiments = [ module_variable_optional_attrs ]
     default = {
       description                     = null
       protocol                        = "HTTP"
