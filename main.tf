@@ -96,9 +96,6 @@ module "mig" {
 }
 
 module "gce-lb-http" {
-  terraform {
-    experiments = [ module_variable_optional_attrs ]
-  }
   source            = "GoogleCloudPlatform/lb-http/google"
   name              = "tr-loadbalancer"
   project           = var.project
