@@ -1,1 +1,0 @@
-# devoteam-intern
