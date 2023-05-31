@@ -1,4 +1,4 @@
-terraform {
+terraform {#new
   required_version = ">= 0.13"
   required_providers {
     google = {
