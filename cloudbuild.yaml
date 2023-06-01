@@ -10,6 +10,17 @@ steps:
       echo "***********************"
       cat main.tf
 
+# [START tf-destroy]
+- id: 'tf destroy'
+  name: 'hashicorp/terraform'
+  entrypoint: 'sh'
+  args: 
+  - '-c'
+  - |
+      terraform destroy
+# [END tf-init]
+
+# [START tf-destroy]
 - id: 'tf init'
   name: 'hashicorp/terraform'
   entrypoint: 'sh'
@@ -17,6 +28,7 @@ steps:
   - '-c'
   - |
       terraform init
+# [END tf-init]
 
 # [START tf-plan]
 - id: 'tf plan'
